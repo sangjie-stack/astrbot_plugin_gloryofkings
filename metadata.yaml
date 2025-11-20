@@ -1,0 +1,6 @@
+name: astrbot_plugin_gloryofkings
+display_name: 王者荣耀数据查询
+desc: 提供王者荣耀战绩、英雄战力、皮肤等数据查询功能，支持自定义图片渲染质量
+version: v1.1.0
+author: 球球
+repo: https://github.com/Sangjie-Stack/astrbot_plugin_gloryofkings

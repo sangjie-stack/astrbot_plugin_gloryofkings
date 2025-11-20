@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header .subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .info-section {
+            margin-bottom: 25px;
+        }
+        
+        .info-section h2 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f093fb;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-section h2::before {
+            content: "●";
+            color: #f5576c;
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        
+        .info-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+        
+        .info-label {
+            color: #666;
+            font-size: 15px;
+        }
+        
+        .info-value {
+            color: #333;
+            font-weight: bold;
+            font-size: 15px;
+        }
+        
+        .status-online {
+            color: #28a745;
+        }
+        
+        .status-offline {
+            color: #dc3545;
+        }
+        
+        .status-gaming {
+            color: #ffc107;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 13px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎮 王者荣耀主页</h1>
+            <div class="subtitle">{{ role_name }}</div>
+        </div>
+        
+        <div class="content">
+            <!-- 基本信息 -->
+            <div class="info-section">
+                <h2>基本信息</h2>
+                <div class="info-item">
+                    <span class="info-label">👤 昵称</span>
+                    <span class="info-value">{{ role_name }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">🆔 营地ID</span>
+                    <span class="info-value">{{ camp_id }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">🎯 等级</span>
+                    <span class="info-value">{{ game_level }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">🏠 区服</span>
+                    <span class="info-value">{{ role_text }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">📱 状态</span>
+                    <span class="info-value status-{{ game_online_class }}">{{ game_online }}</span>
+                </div>
+            </div>
+            
+            <!-- 段位信息 -->
+            <div class="info-section">
+                <h2>段位信息</h2>
+                <div class="info-item">
+                    <span class="info-label">⚔️ 5v5段位</span>
+                    <span class="info-value">{{ rank_5v5 }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">🎯 10v10段位</span>
+                    <span class="info-value">{{ rank_10v10 }}</span>
+                </div>
+            </div>
+            
+            <!-- 数据统计 -->
+            <div class="info-section">
+                <h2>数据统计</h2>
+                <div class="stats-grid">
+                    <div class="info-item">
+                        <span class="info-label">⚡ 战斗力</span>
+                        <span class="info-value">{{ power }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">📊 总场次</span>
+                        <span class="info-value">{{ total }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">📈 胜率</span>
+                        <span class="info-value">{{ win_rate }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">🎖️ MVP</span>
+                        <span class="info-value">{{ mvp }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">🦸 英雄</span>
+                        <span class="info-value">{{ hero }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">👗 皮肤</span>
+                        <span class="info-value">{{ skin }}</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 在线信息 -->
+            <div class="info-section">
+                <h2>在线信息</h2>
+                <div class="info-item">
+                    <span class="info-label">🟢 上次上线</span>
+                    <span class="info-value">{{ online_time }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">🔴 上次离线</span>
+                    <span class="info-value">{{ offline_time }}</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            💡 使用【查询战绩】查看详细战绩
+        </div>
+    </div>
+</body>
+</html>

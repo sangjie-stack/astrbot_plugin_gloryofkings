@@ -1,0 +1,62 @@
+{
+  "enable_role_selection": {
+    "description": "启用角色选择功能",
+    "hint": "允许用户选择不同的王者荣耀角色查看数据",
+    "type": "bool",
+    "default": true
+  },
+  "check_interval": {
+    "description": "战绩检测间隔（秒）",
+    "hint": "每隔多少秒检测一次新战绩",
+    "type": "int",
+    "default": 300
+  },
+  "push_delay": {
+    "description": "战绩推送延迟（秒）",
+    "hint": "检测到新战绩后延迟多久推送，避免数据未完全更新",
+    "type": "int",
+    "default": 60
+  },
+  "debug_mode": {
+    "description": "调试模式",
+    "hint": "开启后会输出详细的调试日志",
+    "type": "bool",
+    "default": false
+  },
+  "render_scale": {
+    "description": "图片渲染分辨率倍数",
+    "hint": "控制图片清晰度的缩放倍数。1=标准清晰度(720p)，2=高清(1440p，推荐)，3=超清(2160p)。数值越大图片越清晰但文件体积也越大，加载速度会变慢。建议根据网络环境选择：移动网络用1，WiFi用2，高速网络用3",
+    "type": "int",
+    "default": 2
+  },
+  "render_quality": {
+    "description": "图片压缩质量",
+    "hint": "JPEG/PNG压缩质量(1-100)，100=无损最高质量，80-95=高质量平衡，60-79=标准质量，<60=低质量。推荐值：追求质量用95-100，平衡用80-90，节省流量用60-75。注意：quality<80时可能出现明显压缩痕迹",
+    "type": "int",
+    "default": 100
+  },
+  "role_selection_data": {
+    "description": "角色选择数据",
+    "hint": "用户选择的角色数据存储（内部使用）",
+    "invisible": true,
+    "type": "object",
+    "items": {},
+    "default": {}
+  },
+  "user_bindings": {
+    "description": "用户绑定数据",
+    "hint": "用户与营地ID的绑定关系（内部使用）",
+    "invisible": true,
+    "type": "object",
+    "items": {},
+    "default": {}
+  },
+  "battle_push_configs": {
+    "description": "战绩推送配置数据",
+    "hint": "各群的战绩推送配置（内部使用）",
+    "invisible": true,
+    "type": "object",
+    "items": {},
+    "default": {}
+  }
+}

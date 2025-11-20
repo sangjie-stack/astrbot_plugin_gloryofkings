@@ -1,0 +1,2 @@
+# HTTP 客户端，用于 API 调用
+aiohttp>=3.8.0
